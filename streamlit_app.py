@@ -1,13 +1,13 @@
 import streamlit as st
 import random
 import matplotlib.pyplot as plt
-st.cache_resource.clear()
+import pandas as pd
 
 # Tạo hàm mô phỏng tung đồng xu
 def simulate_coin_toss(num_tosses):
     outcomes = {'Sấp': 0, 'Ngửa': 0}
     for _ in range(num_tosses):
-        outcome = 'Sấp' if random.random() < 0.5 else 'Ngủa'
+        outcome = 'Sấp' if random.random() < 0.5 else 'Ngửa'
         outcomes[outcome] += 1
     return outcomes
 
@@ -36,7 +36,7 @@ def plot_results(outcomes):
     # Sơ đồ cột
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 5))
     ax1.bar(labels, values)
-    ax1.set_title('Bảng tổng hợp')
+    ax1.set_title('Biểu đồ cột')
 
     # Sơ đồ tròn
     ax2.pie(values, labels=labels, autopct='%1.1f%%')
@@ -63,9 +63,10 @@ if st.button("Mô phỏng"):
     elif simulation_type == "Quay kim trên bìa màu":
         outcomes = simulate_spin_wheel(num_trials)
 
-    # Hiển thị kết quả
-    st.write("Kết quả mô phỏng:")
-    st.write(outcomes)
+    # Hiển thị kết quả dưới dạng bảng
+    df = pd.DataFrame(list(outcomes.items()), columns=['Khả năng', 'Số lượng'])
+    st.write("Kết quả mô phỏng dưới dạng bảng:")
+    st.table(df)
 
     # Vẽ sơ đồ cột và sơ đồ tròn
     plot_results(outcomes)
