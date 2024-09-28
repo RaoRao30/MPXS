@@ -22,11 +22,12 @@ def simulate_dice_roll(num_rolls):
 # Tạo hàm mô phỏng quay kim trên bìa nhiều màu
 def simulate_spin_wheel(num_spins, num_path):
     colors = [
-    "Đỏ", "Xanh dương", "Xanh lá", "Vàng", "Cam", "Hồng", "Tím",
-    "Nâu", "Đen", "Trắng", "Xám", "Bạc", "Vàng nhạt", "Xanh ngọc",
-    "Hồng phấn", "Xanh lục", "Be", "Đỏ đô", "Xanh biển", "Tím than"
+        'Đỏ', 'Xanh dương', 'Xanh lá', 'Vàng', 'Cam', 'Hồng', 'Tím',
+        'Nâu', 'Đen', 'Trắng', 'Xám', 'Bạc', 'Vàng nhạt', 'Xanh ngọc',
+        'Hồng phấn', 'Xanh lục', 'Be', 'Đỏ đô', 'Xanh biển', 'Tím than'
     ]
-    segments = color[:num_path]
+
+    segments = colors[:num_path]
     outcomes = {segment: 0 for segment in segments}
     for _ in range(num_spins):
         outcome = random.choice(segments)
