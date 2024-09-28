@@ -20,8 +20,13 @@ def simulate_dice_roll(num_rolls):
     return outcomes
 
 # Tạo hàm mô phỏng quay kim trên bìa nhiều màu
-def simulate_spin_wheel(num_spins):
-    segments = ['Red', 'Blue', 'Green', 'Yellow', 'Purple', 'Orange']
+def simulate_spin_wheel(num_spins, num_path):
+    colors = [
+    "Đỏ", "Xanh dương", "Xanh lá", "Vàng", "Cam", "Hồng", "Tím",
+    "Nâu", "Đen", "Trắng", "Xám", "Bạc", "Vàng nhạt", "Xanh ngọc",
+    "Hồng phấn", "Xanh lục", "Be", "Đỏ đô", "Xanh biển", "Tím than"
+    ]
+    segments = color[:num_path]
     outcomes = {segment: 0 for segment in segments}
     for _ in range(num_spins):
         outcome = random.choice(segments)
@@ -61,7 +66,8 @@ if st.button("Mô phỏng"):
     elif simulation_type == "Tung xúc xắc":
         outcomes = simulate_dice_roll(num_trials)
     elif simulation_type == "Quay kim trên bìa màu":
-        outcomes = simulate_spin_wheel(num_trials)
+        num_path = st.number_input("Số tấm bìa được chọn", min_value=1, max_value=12, step=1)
+        outcomes = simulate_spin_wheel(num_trials, num_path)
 
     # Hiển thị kết quả dưới dạng bảng
     df = pd.DataFrame(list(outcomes.items()), columns=['Khả năng', 'Số lượng'])
