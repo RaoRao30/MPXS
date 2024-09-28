@@ -68,7 +68,6 @@ if st.button("Mô phỏng"):
     elif simulation_type == "Tung xúc xắc":
         outcomes = simulate_dice_roll(num_trials)
     elif simulation_type == "Quay kim trên bìa màu":
-        num_path = st.number_input("Số tấm bìa được chọn", min_value=1, max_value=12, step=1)
         outcomes = simulate_spin_wheel(num_trials, num_path)
 
     # Hiển thị kết quả dưới dạng bảng
