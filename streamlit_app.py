@@ -20,13 +20,19 @@ def simulate_dice_roll(num_rolls):
     return outcomes
 
 # Tạo hàm mô phỏng quay kim trên bìa nhiều màu
-def simulate_spin_wheel(num_spins, num_path):
-    colors = [
+colors = [
         'Đỏ', 'Xanh dương', 'Xanh lá', 'Vàng', 'Cam', 'Hồng', 'Tím',
         'Nâu', 'Đen', 'Trắng', 'Xám', 'Bạc', 'Vàng nhạt', 'Xanh ngọc',
         'Hồng phấn', 'Xanh lục', 'Be', 'Đỏ đô', 'Xanh biển', 'Tím than'
     ]
 
+colors_english = [
+    'red', 'blue', 'green', 'yellow', 'orange', 'pink', 'purple',
+    'brown', 'black', 'white', 'gray', 'silver', 'light yellow', 'cyan',
+    'light pink', 'lime', 'beige', 'maroon', 'navy', 'dark purple'
+]
+
+def simulate_spin_wheel(num_spins, num_path):
     segments = colors[:num_path]
     outcomes = {segment: 0 for segment in segments}
     for _ in range(num_spins):
@@ -35,17 +41,30 @@ def simulate_spin_wheel(num_spins, num_path):
     return outcomes
 
 # Hàm vẽ sơ đồ cột và sơ đồ tròn
-def plot_results(outcomes):
+def plot_results(outcomes, num):
     labels = list(outcomes.keys())
     values = list(outcomes.values())
     
     # Sơ đồ cột
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 5))
-    ax1.bar(labels, values)
+
+    # Vẽ biểu đồ cột
+    bars = ax1.bar(labels, values)
+
+    # Thêm số liệu trên đầu mỗi cột
+    for bar in bars:
+        yval = bar.get_height()  # Lấy chiều cao (giá trị) của cột
+        ax1.text(bar.get_x() + bar.get_width()/2, yval, f'{yval}', ha='center', va='bottom')
+
+    # Thêm tiêu đề
     ax1.set_title('Biểu đồ cột')
 
     # Sơ đồ tròn
-    ax2.pie(values, labels=labels, autopct='%1.1f%%')
+    # Tạo biểu đồ tròn
+    mau = colors_english[:num]
+    ax2.pie(values, labels=labels, colors = mau, autopct='%1.1f%%')
+
+    # Thêm tiêu đề
     ax2.set_title('Biểu đồ tròn')
 
     st.pyplot(fig)
@@ -55,7 +74,7 @@ st.title("Mô Phỏng Xác Suất")
 
 # Lựa chọn kiểu mô phỏng
 simulation_type = st.selectbox("Chọn loại mô phỏng", 
-                               ["Tung đồng xu", "Tung xúc xắc", "Quay kim trên bìa màu"])
+                               ["Tung đồng xu", "Gieo xúc xắc", "Quay kim trên bìa màu"])
 
 # Nhập số lần mô phỏng
 num_trials = st.number_input("Số lần mô phỏng", min_value=1, value=10, step=1)
@@ -66,15 +85,18 @@ if simulation_type == "Quay kim trên bìa màu":
 if st.button("Mô phỏng"):
     if simulation_type == "Tung đồng xu":
         outcomes = simulate_coin_toss(num_trials)
+        num = 2
     elif simulation_type == "Tung xúc xắc":
         outcomes = simulate_dice_roll(num_trials)
+        num = 6
     elif simulation_type == "Quay kim trên bìa màu":
         outcomes = simulate_spin_wheel(num_trials, num_path)
+        num = num_path
 
     # Hiển thị kết quả dưới dạng bảng
-    df = pd.DataFrame(list(outcomes.items()), columns=['Khả năng', 'Số lượng'])
+    df = pd.DataFrame(list(outcomes.items()), columns=['Kết quả có thể', 'Số lần'])
     st.write("Kết quả mô phỏng dưới dạng bảng:")
     st.table(df)
 
     # Vẽ sơ đồ cột và sơ đồ tròn
-    plot_results(outcomes)
+    plot_results(outcomes, num)
