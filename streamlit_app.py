@@ -24,7 +24,7 @@ colors = [
         'Đỏ', 'Xanh dương', 'Xanh lá', 'Vàng', 'Cam', 'Hồng', 'Tím',
         'Nâu', 'Trắng', 'Xám', 'Bạc', 'Vàng nhạt', 'Xanh ngọc',
         'Hồng phấn', 'Xanh lục', 'Be', 'Đỏ đô', 'Xanh biển', 'Tím than', 'Đen'
-    ]
+        ]
 
 colors_rgb = [
     (255, 0, 0),       # red
@@ -98,7 +98,10 @@ simulation_type = st.selectbox("Chọn loại mô phỏng",
 # Nhập số lần mô phỏng
 num_trials = st.number_input("Số lần mô phỏng", min_value=1, value=10, step=1)
 if simulation_type == "Quay kim trên bìa màu":
-        num_path = st.number_input("Số tấm bìa được chọn", min_value=1, max_value=20, step=1)
+    num_path = st.number_input("Số tấm bìa được chọn", min_value=1, max_value=20, step=1)
+    # Đảm bảo num_path không vượt quá số lượng màu trong mảng
+    if num_path > len(colors):
+        num_path = len(colors)
 
 # Nút mô phỏng
 if st.button("Mô phỏng"):
