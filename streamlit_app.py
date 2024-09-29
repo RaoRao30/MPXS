@@ -108,7 +108,7 @@ if st.button("Mô phỏng"):
     if simulation_type == "Tung đồng xu":
         outcomes = simulate_coin_toss(num_trials)
         num = len(outcomes)
-    elif simulation_type == "Tung xúc xắc":
+    elif simulation_type == "Gieo xúc xắc":
         outcomes = simulate_dice_roll(num_trials)
         num = len(outcomes)
     elif simulation_type == "Quay kim trên bìa màu":
@@ -117,7 +117,7 @@ if st.button("Mô phỏng"):
 
     # Hiển thị kết quả dưới dạng bảng
     df = pd.DataFrame(list(outcomes.items()), columns=['Kết quả có thể', 'Số lần'])
-    st.write("Kết quả mô phỏng dưới dạng bảng:")
+    st.write("Kết quả mô phỏng dưới Biểu đồ:")
     st.table(df)
 
     # Vẽ sơ đồ cột và sơ đồ tròn
