@@ -26,11 +26,29 @@ colors = [
         'Hồng phấn', 'Xanh lục', 'Be', 'Đỏ đô', 'Xanh biển', 'Tím than', 'Đen'
     ]
 
-colors_english = [
-    'red', 'blue', 'green', 'yellow', 'orange', 'pink', 'purple',
-    'brown', 'white', 'gray', 'silver', 'light yellow', 'cyan',
-    'light pink', 'lime', 'beige', 'maroon', 'navy', 'dark purple', 'black'
+colors_rgb = [
+    (255, 0, 0),       # red
+    (0, 0, 255),       # blue
+    (0, 255, 0),       # green
+    (255, 255, 0),     # yellow
+    (255, 165, 0),     # orange
+    (255, 192, 203),   # pink
+    (128, 0, 128),     # purple
+    (165, 42, 42),     # brown
+    (255, 255, 255),   # white
+    (128, 128, 128),   # gray
+    (192, 192, 192),   # silver
+    (255, 255, 224),   # light yellow
+    (0, 255, 255),     # cyan
+    (255, 182, 193),   # light pink
+    (0, 255, 0),       # lime
+    (245, 245, 220),   # beige
+    (128, 0, 0),       # maroon
+    (0, 0, 128),       # navy
+    (75, 0, 130),      # dark purple
+    (0, 0, 0)          # black
 ]
+
 
 def simulate_spin_wheel(num_spins, num_path):
     segments = colors[:num_path]
@@ -61,7 +79,7 @@ def plot_results(outcomes, num):
 
     # Sơ đồ tròn
     # Tạo biểu đồ tròn
-    mau = colors_english[:num]
+    mau = colors_rgb[:num]
     ax2.pie(values, labels=labels, colors = mau, autopct='%1.1f%%')
 
     # Thêm tiêu đề
