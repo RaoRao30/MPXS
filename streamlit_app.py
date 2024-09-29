@@ -49,6 +49,7 @@ colors_rgb = [
     (0, 0, 0)          # black
 ]
 
+colors_normalized = [(r/255, g/255, b/255) for r, g, b in colors_rgb]
 
 def simulate_spin_wheel(num_spins, num_path):
     segments = colors[:num_path]
@@ -79,7 +80,7 @@ def plot_results(outcomes, num):
 
     # Sơ đồ tròn
     # Tạo biểu đồ tròn
-    mau = colors_rgb[:num]
+    mau = colors_normalized[:num]
     ax2.pie(values, labels=labels, colors = mau, autopct='%1.1f%%')
 
     # Thêm tiêu đề
