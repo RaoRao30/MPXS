@@ -62,7 +62,7 @@ def plot_results(outcomes, num):
     # Sơ đồ tròn
     # Tạo biểu đồ tròn
     mau = colors_english[:num]
-    ax2.pie(values, labels=labels, colors = mau, autopct='%1.1f%%')
+    ax2.pie(values, labels=labels, colors = mau, autopct='%1.1f%%', alpha = 0.7)
 
     # Thêm tiêu đề
     ax2.set_title('Biểu đồ tròn')
