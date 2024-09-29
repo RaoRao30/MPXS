@@ -22,14 +22,14 @@ def simulate_dice_roll(num_rolls):
 # Tạo hàm mô phỏng quay kim trên bìa nhiều màu
 colors = [
         'Đỏ', 'Xanh dương', 'Xanh lá', 'Vàng', 'Cam', 'Hồng', 'Tím',
-        'Nâu', 'Đen', 'Trắng', 'Xám', 'Bạc', 'Vàng nhạt', 'Xanh ngọc',
-        'Hồng phấn', 'Xanh lục', 'Be', 'Đỏ đô', 'Xanh biển', 'Tím than'
+        'Nâu', 'Trắng', 'Xám', 'Bạc', 'Vàng nhạt', 'Xanh ngọc',
+        'Hồng phấn', 'Xanh lục', 'Be', 'Đỏ đô', 'Xanh biển', 'Tím than', 'Đen'
     ]
 
 colors_english = [
     'red', 'blue', 'green', 'yellow', 'orange', 'pink', 'purple',
-    'brown', 'black', 'white', 'gray', 'silver', 'light yellow', 'cyan',
-    'light pink', 'lime', 'beige', 'maroon', 'navy', 'dark purple'
+    'brown', 'white', 'gray', 'silver', 'light yellow', 'cyan',
+    'light pink', 'lime', 'beige', 'maroon', 'navy', 'dark purple', 'black'
 ]
 
 def simulate_spin_wheel(num_spins, num_path):
