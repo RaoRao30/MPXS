@@ -107,10 +107,10 @@ if simulation_type == "Quay kim trên bìa màu":
 if st.button("Mô phỏng"):
     if simulation_type == "Tung đồng xu":
         outcomes = simulate_coin_toss(num_trials)
-        num = 2
+        num = len(outcomes)
     elif simulation_type == "Tung xúc xắc":
         outcomes = simulate_dice_roll(num_trials)
-        num = 6
+        num = len(outcomes)
     elif simulation_type == "Quay kim trên bìa màu":
         outcomes = simulate_spin_wheel(num_trials, num_path)
         num = num_path
