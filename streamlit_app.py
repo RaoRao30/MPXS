@@ -108,15 +108,15 @@ if st.button("Mô phỏng"):
     if simulation_type == "Tung đồng xu":
         outcomes = simulate_coin_toss(num_trials)
         num = len(outcomes)
-        st.image("image/dongxu.gif", use_column_width= True)
+        st.image("image/dongxu.gif", width= 100)
     elif simulation_type == "Gieo xúc xắc":
         outcomes = simulate_dice_roll(num_trials)
         num = len(outcomes)
-        st.image("image/xucsac.gif", use_column_width= True)
+        st.image("image/xucsac.gif", height = 200)
     elif simulation_type == "Quay kim trên bìa màu":
         outcomes = simulate_spin_wheel(num_trials, num_path)
         num = num_path
-        st.image("image/quaybien.gif", use_column_width= True)
+        st.image("image/quaybien.gif", height = 100)
 
     # Hiển thị kết quả dưới dạng bảng
     df = pd.DataFrame(list(outcomes.items()), columns=['Kết quả có thể', 'Số lần'])
