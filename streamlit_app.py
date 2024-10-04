@@ -116,7 +116,7 @@ if st.button("Mô phỏng"):
     elif simulation_type == "Quay kim trên bìa màu":
         outcomes = simulate_spin_wheel(num_trials, num_path)
         num = num_path
-        st.image("image/black_spin.gif", width= 200)
+        st.image("image/png_spin.gif", width= 200)
 
     # Hiển thị kết quả dưới dạng bảng
     df = pd.DataFrame(list(outcomes.items()), columns=['Kết quả có thể', 'Số lần'])
